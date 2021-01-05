@@ -16,7 +16,6 @@ def main():
     #main menu system
     choice = -1
     while choice != 4:
-        jsonify('hi there')
         print("Main Menu\n")
         print("[1] Library")
         print("[2] Customers")

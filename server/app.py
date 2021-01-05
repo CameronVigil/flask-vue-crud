@@ -1,17 +1,6 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, redirect, url_for, request
 from flask_cors import CORS
-import sqlalchemy
-from sqlalchemy import Column, Integer, Unicode, UnicodeText, String, Sequence
-from random import choice
-import string
-from library import book
-from customers import customer
-from transactions import transaction
-import base
-from base import Session, Base, engine
-import json
 from LibrarySystemProject import main
-import queries
 
 # configuration
 DEBUG = True
@@ -29,6 +18,7 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 def hello():
     return main()
 
+@app.route('/MainMenu',methods = [])
 
 if __name__ == '__main__':
     app.run()
