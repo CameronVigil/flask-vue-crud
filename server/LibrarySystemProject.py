@@ -9,10 +9,7 @@ from customers import customer
 from transactions import transaction
 from base import Session, Base, engine
 
-def main():
-    Base.metadata.create_all(engine)
-    session = Session()
-
+def menu():
     #main menu system
     choice = -1
     while choice != 4:
@@ -35,6 +32,12 @@ def main():
         else:
             print("Error, please try again.\n")
 
+
+def main():
+    Base.metadata.create_all(engine)
+    session = Session()
+    menu()
+    
     for i in book.Books:
         session.add(i)
  
