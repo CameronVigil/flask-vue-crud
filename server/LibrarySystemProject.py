@@ -1,13 +1,3 @@
-from flask import Flask, jsonify
-from flask_cors import CORS
-import sqlalchemy
-from sqlalchemy import Column, Integer, Unicode, UnicodeText, String, Sequence
-from random import choice
-import string
-from library import book
-from customers import customer
-from transactions import transaction
-from base import Session, Base, engine
 
 def menu():
     #main menu system
@@ -34,9 +24,7 @@ def menu():
 
 
 def main():
-    Base.metadata.create_all(engine)
-    session = Session()
-    menu()
+    
     
     for i in book.Books:
         session.add(i)
