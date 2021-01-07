@@ -1,9 +1,7 @@
 from flask import Flask, jsonify, redirect, url_for, request, render_template
 from flask_cors import CORS
 from LibrarySystemProject import main
-import sqlalchemy
 from sqlalchemy import Column, Integer, Unicode, UnicodeText, String, Sequence
-from random import choice
 import string
 from library import book
 from customers import customer
@@ -27,21 +25,32 @@ session = Session()
 
 # sanity check route
 @app.route('/')
-def hello():
+def menu():
     return render_template('MainMenu.html')
-
-@app.route('/MainMenu', methods = ['POST', 'GET'])
-def hi():
+#Main Menu
+@app.route('/', methods = ['POST', 'GET'])
+def menuResult():
     if request.method == 'POST':
-        if request.form['menu'] == 'Library':
+        if request.form['MainMenu'] == 'Library':
+            result = request.form
+            return render_template("libraryMenu.html", result = result)
+        elif request.form['MainMenu'] == 'Customers':
+            result = request.form
+            return render_template("customerMenu.html", result = result)
+        elif request.form['MainMenu'] == 'Transactions':
+            result = request.form
+            return render_template("transactionsMenu.html", result = result)
+        elif request.form['MainMenu'] == 'Save and Exit':
             pass
-        elif request.form['menu'] == 'Customers':
-            pass
-        elif request.form['menu'] == 'Transactions':
-            pass
-        elif request.form['menu'] == 'Save and Exit':
-            pass
+        elif request.form['menu'] == 'Return to Main Menu':
+            result = request.form
+            return render_template("MainMenu.html", result = result)
     return 
+#Library Sub Menu
+
+#Customer Sub Menu
+  
+#Transactions Sub Menu
 
 if __name__ == '__main__':
     app.run()
